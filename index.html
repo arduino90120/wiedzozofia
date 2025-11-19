@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/wiedzozofia/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="wiedzozofiaWeb aplikacja do nauki i ćwiczenia umysłowego.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="wiedzozofiaweb">
+  <link rel="apple-touch-icon" href="icons/android_ic_launcher-192x192.png">
+
+  <!-- iOS and Android Icons -->
+  <link rel="apple-touch-icon" href="icons/android_ic_launcher-192x192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/android_ic_launcher-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/android_ic_launcher-144x144.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="android_ic_launcher-48x48.png">
+
+  <!-- Windows Icons -->
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="msapplication-TileImage" content="icons/mstile-150x150.png">
+  <meta name="msapplication-config" content="browserconfig.xml">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="android_ic_launcher-48x48.png"/>
+
+  <!-- Audio track meta --->
+  <audio id="myAudio" src="assets/fanfare.mp3"></audio>
+  <audio id="myAudio1" src="assets/newlevel.mp3"></audio>
+  <audio id="myAudio2" src="assets/failure2.mp3"></audio>
+
+  <title>WiedzozofiaWeb</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
+
+<script>
+  // Registering the service worker for PWA functionality
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/service_worker.js')
+        .then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+
+  // Detecting platform and environment
+  const userAgent = navigator.userAgent.toLowerCase();
+  if (userAgent.includes("android")) {
+    console.log("Running on Android");
+  } else if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
+    console.log("Running on iOS");
+  } else if (userAgent.includes("windows phone")) {
+    console.log("Running on Windows Phone");
+  } else if (userAgent.includes("windows") && userAgent.includes("mobile")) {
+    console.log("Running on Windows 10 Mobile");
+  } else if (userAgent.includes("windows")) {
+    console.log("Running on Windows");
+  } else if (userAgent.includes("mac os")) {
+    console.log("Running on macOS");
+  } else if (userAgent.includes("linux")) {
+    console.log("Running on Linux/Unix");
+  } else if (userAgent.includes("symbian") || userAgent.includes("s60") || userAgent.includes("series60") || userAgent.includes("series40")) {
+    console.log("Running on Symbian (S60/S40)");
+  } else {
+    console.log("Running on an unsupported platform");
+  }
+</script>
